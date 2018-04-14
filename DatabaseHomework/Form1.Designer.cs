@@ -83,28 +83,28 @@
             // 
             this.GenreTextBox.Location = new System.Drawing.Point(78, 148);
             this.GenreTextBox.Name = "GenreTextBox";
-            this.GenreTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GenreTextBox.Size = new System.Drawing.Size(224, 20);
             this.GenreTextBox.TabIndex = 4;
             // 
             // EngineTextBox
             // 
             this.EngineTextBox.Location = new System.Drawing.Point(78, 226);
             this.EngineTextBox.Name = "EngineTextBox";
-            this.EngineTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EngineTextBox.Size = new System.Drawing.Size(224, 20);
             this.EngineTextBox.TabIndex = 5;
             // 
             // YearTextBox
             // 
             this.YearTextBox.Location = new System.Drawing.Point(78, 174);
             this.YearTextBox.Name = "YearTextBox";
-            this.YearTextBox.Size = new System.Drawing.Size(100, 20);
+            this.YearTextBox.Size = new System.Drawing.Size(224, 20);
             this.YearTextBox.TabIndex = 6;
             // 
             // DeveloperTextBox
             // 
             this.DeveloperTextBox.Location = new System.Drawing.Point(78, 200);
             this.DeveloperTextBox.Name = "DeveloperTextBox";
-            this.DeveloperTextBox.Size = new System.Drawing.Size(100, 20);
+            this.DeveloperTextBox.Size = new System.Drawing.Size(224, 20);
             this.DeveloperTextBox.TabIndex = 7;
             // 
             // GenreLabel
@@ -145,7 +145,7 @@
             // 
             // AddGame
             // 
-            this.AddGame.Location = new System.Drawing.Point(125, 279);
+            this.AddGame.Location = new System.Drawing.Point(125, 261);
             this.AddGame.Name = "AddGame";
             this.AddGame.Size = new System.Drawing.Size(75, 23);
             this.AddGame.TabIndex = 12;
@@ -155,7 +155,7 @@
             // 
             // UpdateGame
             // 
-            this.UpdateGame.Location = new System.Drawing.Point(206, 279);
+            this.UpdateGame.Location = new System.Drawing.Point(206, 261);
             this.UpdateGame.Name = "UpdateGame";
             this.UpdateGame.Size = new System.Drawing.Size(75, 23);
             this.UpdateGame.TabIndex = 13;
@@ -165,7 +165,7 @@
             // 
             // DeleteGame
             // 
-            this.DeleteGame.Location = new System.Drawing.Point(287, 279);
+            this.DeleteGame.Location = new System.Drawing.Point(287, 261);
             this.DeleteGame.Name = "DeleteGame";
             this.DeleteGame.Size = new System.Drawing.Size(75, 23);
             this.DeleteGame.TabIndex = 14;
