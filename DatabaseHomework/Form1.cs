@@ -17,18 +17,8 @@ namespace DatabaseHomework
         public Form1()
         {
             InitializeComponent();
-            var client = new MongoClient("mongodb+srv://Cliff:Cliff@cliffdb-isepc.mongodb.net/test");
-            var db = client.GetDatabase("myDB");
 
-            var coll = db.GetCollection<Games>("test");
-            //var q = from gam in coll.AsQueryable<Games>         
-            var query = from gam in coll.AsQueryable<Games>()                       
-                        select gam.Title;
-
-            List<string> li = query.ToList();
-
-            ListGames.DataSource = li;
-            
+            UpdateList();
         }
 
         private void AddGame_Click(object sender, EventArgs e)
@@ -39,35 +29,80 @@ namespace DatabaseHomework
             var coll = db.GetCollection<Games>("test");
             
             Games games = new Games();
-            games.Title = "cool";
-            games.Description = "cool";
-            games.Genre = "cool";
-            games.Year = 1;
-            games.Developer = "cool";
-            games.Engine = "cool";
-            coll.InsertOne(games);
+            games.Title = TitleTextBox.Text;
+            games.Description = DescriptionTextBox.Text;
+            games.Genre = GenreTextBox.Text;
+            games.Year = int.Parse(YearTextBox.Text);
+            games.Developer = DeveloperTextBox.Text;
+            games.Engine = EngineTextBox.Text;
+            coll.InsertOne(games);          
 
-            var query = from gam in coll.AsQueryable<Games>()
-                        where gam.Title == "cool"
-                        select gam;
-            Games result = query.FirstOrDefault<Games>();
-
+            UpdateList();
         }
 
-        private void DisplayGame_Click(object sender, EventArgs e)
+        private void UpdateGame_Click(object sender, EventArgs e)
         {
-            var client = new MongoClient("mongodb+srv://Cliff:<Q0Jf8WHeruuOKqCu>@cliffdb-isepc.mongodb.net/test");
+            var client = new MongoClient("mongodb+srv://Cliff:Cliff@cliffdb-isepc.mongodb.net/test");
             var db = client.GetDatabase("myDB");
 
-            foreach (var item in db.ListCollections().ToList())
-            {
+            var coll = db.GetCollection<Games>("test");
 
-            }
+            //Games games = new Games();
+            //games.Title = TitleTextBox.Text;
+            //games.Description = DescriptionTextBox.Text;
+            //games.Genre = GenreTextBox.Text;
+            //games.Year = int.Parse(YearTextBox.Text);
+            //games.Developer = DeveloperTextBox.Text;
+            //games.Engine = EngineTextBox.Text;
+            ////coll.InsertOne(games);
+            //coll.UpdateOne()
+            UpdateList();
+        }
+
+        private void DeleteGame_Click(object sender, EventArgs e)
+        {
+            var client = new MongoClient("mongodb+srv://Cliff:Cliff@cliffdb-isepc.mongodb.net/test");
+            var db = client.GetDatabase("myDB");
+
+            var coll = db.GetCollection<Games>("test");
+
+            UpdateList();
         }
 
         private void ListGames_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var client = new MongoClient("mongodb+srv://Cliff:Cliff@cliffdb-isepc.mongodb.net/test");
+            var db = client.GetDatabase("myDB");
 
+            var coll = db.GetCollection<Games>("test");
+
+            var title = ListGames.Text;
+
+            var query = from gam in coll.AsQueryable<Games>()
+                        where gam.Title == title
+                        select gam;
+            Games games = query.FirstOrDefault();
+
+            TitleTextBox.Text = games.Title;
+            DescriptionTextBox.Text = games.Description;
+            GenreTextBox.Text = games.Genre;
+            YearTextBox.Text = games.Year.ToString();
+            DeveloperTextBox.Text = games.Developer;
+            EngineTextBox.Text = games.Engine;
         }
+
+        private void UpdateList()
+        {
+            var client = new MongoClient("mongodb+srv://Cliff:Cliff@cliffdb-isepc.mongodb.net/test");
+            var db = client.GetDatabase("myDB");
+
+            var coll = db.GetCollection<Games>("test"); 
+            var query = from gam in coll.AsQueryable<Games>()
+                        select gam.Title;
+
+            List<string> li = query.ToList();
+
+            ListGames.DataSource = li;
+        }        
     }
 }
